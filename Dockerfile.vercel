@@ -10,6 +10,8 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install pdo_pgsql \
     && rm -rf /var/lib/apt/lists/*
 
+RUN php -r "var_dump(password_algos()); var_dump(password_hash('teste', PASSWORD_BCRYPT));"
+
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
