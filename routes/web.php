@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\ProjectController;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', PortfolioController::class)->name('home');
@@ -11,11 +12,17 @@ Route::middleware(['auth', 'can:manage-projects'])->group(function () {
     Route::resource('projects', ProjectController::class)->only(['create', 'store', 'edit', 'update']);
 });
 
-Route::get('/debug-php', function () {
+Route::get('/debug-user', function () {
+    $user = User::first();
+
     return [
-        'php' => PHP_VERSION,
-        'algos' => password_algos(),
-        'bcrypt' => password_hash('teste', PASSWORD_BCRYPT),
+        'exists' => (bool) $user,
+        'password_prefix' => $user
+            ? substr($user->password, 0, 10)
+            : null,
+        'password_length' => $user
+            ? strlen($user->password)
+            : null,
     ];
 });
 
