@@ -11,4 +11,12 @@ Route::middleware(['auth', 'can:manage-projects'])->group(function () {
     Route::resource('projects', ProjectController::class)->only(['create', 'store', 'edit', 'update']);
 });
 
+Route::get('/debug-php', function () {
+    return [
+        'php' => PHP_VERSION,
+        'algos' => password_algos(),
+        'bcrypt' => password_hash('teste', PASSWORD_BCRYPT),
+    ];
+});
+
 require __DIR__.'/settings.php';
