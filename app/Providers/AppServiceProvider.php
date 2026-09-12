@@ -20,9 +20,9 @@ class AppServiceProvider extends ServiceProvider
     {
         Gate::define('manage-projects', fn (User $user): bool => $user->is_portfolio_admin === true);
 
-    if (app()->isProduction()) {
-        URL::forceScheme('https');
-    }
+        if (app()->isProduction()) {
+            URL::forceScheme('https');
+        }
 
         $this->configureDefaults();
     }
