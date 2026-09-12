@@ -18,9 +18,10 @@ Route::get('/debug-auth', function () {
         'authenticated' => Auth::check(),
         'user_id' => Auth::id(),
         'session_driver' => config('session.driver'),
-        'session_cookie' => config('session.cookie'),
         'session_secure' => config('session.secure'),
         'session_domain' => config('session.domain'),
+        'app_key_set' => !empty(config('app.key')),
+        'app_key_length' => strlen((string) config('app.key')),
     ];
 });
 
