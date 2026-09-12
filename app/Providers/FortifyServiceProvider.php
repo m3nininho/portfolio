@@ -25,19 +25,6 @@ class FortifyServiceProvider extends ServiceProvider
         $this->configureViews();
         $this->configureRateLimiting();
 
-        Fortify::authenticateUsing(function ($request) {
-            $credentials = $request->only('email', 'password');
-
-            $ok = Auth::attempt($credentials, $request->boolean('remember'));
-
-            logger()->info('LOGIN DEBUG', [
-                'attempt' => $ok,
-                'authenticated' => Auth::check(),
-                'user_id' => Auth::id(),
-            ]);
-
-            return $ok ? Auth::user() : null;
-        });
     }
 
     /**
