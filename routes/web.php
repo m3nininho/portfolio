@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\ProjectController;
-use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', PortfolioController::class)->name('home');
@@ -12,17 +11,10 @@ Route::middleware(['auth', 'can:manage-projects'])->group(function () {
     Route::resource('projects', ProjectController::class)->only(['create', 'store', 'edit', 'update']);
 });
 
-Route::get('/debug-user', function () {
-    $user = User::first();
-
+Route::get('/debug-hash-config', function () {
     return [
-        'exists' => (bool) $user,
-        'password_prefix' => $user
-            ? substr($user->password, 0, 10)
-            : null,
-        'password_length' => $user
-            ? strlen($user->password)
-            : null,
+        'driver' => config('hashing.driver'),
+        'bcrypt' => config('hashing.bcrypt'),
     ];
 });
 
