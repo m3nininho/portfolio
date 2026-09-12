@@ -8,11 +8,36 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
+    --color-slate-50: #f2f5f4;
+    --color-slate-100: #e2eae9;
+    --color-slate-200: #cad8d8;
+    --color-slate-300: #adbec1;
+    --color-slate-400: #8fa6ac;
+    --color-slate-500: #6e878f;
+    --color-slate-600: #506b75;
+    --color-slate-700: #354f5b;
+    --color-slate-800: #243c48;
+    --color-slate-900: #192d38;
+    --color-slate-950: #10212b;
+    --color-cyan-50: #faf5e4;
+    --color-cyan-100: #f0e5bb;
+    --color-cyan-200: #e4d18f;
+    --color-cyan-300: #d8bf70;
+    --color-cyan-400: #c9ab59;
+    --color-cyan-500: #ad8d42;
+    --color-cyan-600: #8d7033;
+    --color-cyan-700: #6d552a;
+    --color-cyan-800: #514024;
+    --color-cyan-900: #392f1d;
+    --color-cyan-950: #252116;
+
     --font-sans:
         'Instrument Sans', ui-sans-serif, system-ui, sans-serif,
         'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
         'Noto Color Emoji';
 
+    --radius-2xl: calc(var(--radius) + 4px);
+    --radius-xl: calc(var(--radius) + 2px);
     --radius-lg: var(--radius);
     --radius-md: calc(var(--radius) - 2px);
     --radius-sm: calc(var(--radius) - 4px);
@@ -62,29 +87,29 @@
 }
 
 :root {
-    --card: oklch(1 0 0);
-    --card-foreground: oklch(0.145 0 0);
-    --popover: oklch(1 0 0);
-    --popover-foreground: oklch(0.145 0 0);
+    --card: var(--color-white);
+    --card-foreground: var(--color-slate-900);
+    --popover: var(--color-white);
+    --popover-foreground: var(--color-slate-900);
     --primary: var(--color-cyan-700);
     --primary-foreground: var(--color-white);
-    --secondary: oklch(0.97 0 0);
-    --secondary-foreground: oklch(0.205 0 0);
-    --muted: oklch(0.97 0 0);
-    --muted-foreground: oklch(0.556 0 0);
-    --accent: oklch(0.97 0 0);
-    --accent-foreground: oklch(0.205 0 0);
+    --secondary: var(--color-slate-100);
+    --secondary-foreground: var(--color-slate-800);
+    --muted: var(--color-slate-100);
+    --muted-foreground: var(--color-slate-600);
+    --accent: var(--color-cyan-100);
+    --accent-foreground: var(--color-cyan-800);
     --destructive: oklch(0.577 0.245 27.325);
     --destructive-foreground: oklch(0.577 0.245 27.325);
-    --border: oklch(0.922 0 0);
-    --input: oklch(0.922 0 0);
+    --border: var(--color-slate-200);
+    --input: var(--color-slate-200);
     --ring: var(--color-cyan-600);
     --chart-1: oklch(0.646 0.222 41.116);
     --chart-2: oklch(0.6 0.118 184.704);
     --chart-3: oklch(0.398 0.07 227.392);
     --chart-4: oklch(0.828 0.189 84.429);
     --chart-5: oklch(0.769 0.188 70.08);
-    --radius: 0.625rem;
+    --radius: 0.375rem;
     --sidebar: var(--color-slate-50);
     --sidebar-foreground: var(--color-slate-700);
     --sidebar-primary: var(--color-cyan-700);
@@ -93,8 +118,34 @@
     --sidebar-accent-foreground: var(--color-cyan-800);
     --sidebar-border: var(--color-slate-200);
     --sidebar-ring: var(--color-cyan-600);
-    --background: var(--color-white);
+    --background: #edf1f2;
     --foreground: var(--color-slate-900);
+}
+
+:root:not(.dark) {
+    --color-slate-50: #edf1f2;
+    --color-slate-100: #e1e8ea;
+    --color-slate-200: #c8d4d8;
+    --color-slate-300: #aabcc2;
+    --color-slate-400: #869fa8;
+    --color-slate-500: #617c87;
+    --color-slate-600: #48636f;
+    --color-slate-700: #36515e;
+    --color-slate-800: #293f4b;
+    --color-slate-900: #1c303b;
+    --color-slate-950: #11212b;
+    --color-cyan-50: #edf3f3;
+    --color-cyan-100: #dce8e8;
+    --color-cyan-200: #b9d0d2;
+    --color-cyan-300: #92b4b9;
+    --color-cyan-400: #6c959f;
+    --color-cyan-500: #507a86;
+    --color-cyan-600: #3e6371;
+    --color-cyan-700: #315461;
+    --color-cyan-800: #27434f;
+    --color-cyan-900: #20353f;
+    --color-cyan-950: #16252d;
+    --background: #edf1f2;
 }
 
 .dark {
@@ -129,7 +180,7 @@
     --sidebar-border: var(--color-slate-700);
     --sidebar-ring: var(--color-cyan-400);
     --background: var(--color-slate-900);
-    --foreground: var(--color-white);
+    --foreground: var(--color-slate-100);
 }
 
 @layer base {
