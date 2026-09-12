@@ -11,10 +11,16 @@ Route::middleware(['auth', 'can:manage-projects'])->group(function () {
     Route::resource('projects', ProjectController::class)->only(['create', 'store', 'edit', 'update']);
 });
 
-Route::get('/debug-hash-config', function () {
+use Illuminate\Support\Facades\Auth;
+
+Route::get('/debug-auth', function () {
     return [
-        'driver' => config('hashing.driver'),
-        'bcrypt' => config('hashing.bcrypt'),
+        'authenticated' => Auth::check(),
+        'user_id' => Auth::id(),
+        'session_driver' => config('session.driver'),
+        'session_cookie' => config('session.cookie'),
+        'session_secure' => config('session.secure'),
+        'session_domain' => config('session.domain'),
     ];
 });
 
